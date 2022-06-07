@@ -21,6 +21,7 @@ namespace NationsApi.DataAccess
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<RoleUseCase> RoleUseCases { get; set; }
+        public DbSet<UseCaseLog> UseCaseLog { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

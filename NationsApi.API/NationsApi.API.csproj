@@ -7,8 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="FluentValidation" Version="11.0.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NationsApi.Application\NationsApi.Application.csproj" />
+    <ProjectReference Include="..\NationsApi.DataAccess\NationsApi.DataAccess.csproj" />
+    <ProjectReference Include="..\NationsApi.Implementation\NationsApi.Implementation.csproj" />
   </ItemGroup>
 
 </Project>
