@@ -8,6 +8,6 @@ namespace NationsApi.API.Core
 
         public string Username => "fakeActor";
 
-        public IEnumerable<int> AllowedUseCases => Enumerable.Range(1, 5);
+        public IEnumerable<int> AllowedUseCases => Enumerable.Range(1,100);
     }
 }

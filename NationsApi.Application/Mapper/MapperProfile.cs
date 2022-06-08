@@ -15,6 +15,8 @@ namespace NationsApi.Application.Mapper
         {
             // Continent
             CreateMap<AddContinentDto, Continent>();
+            CreateMap<UpdateContinentDto, Continent>();
+            CreateMap<Continent, GetContinentDto>();
         }
     }
 }

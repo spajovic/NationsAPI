@@ -3,8 +3,10 @@ using NationsApi.Application;
 using NationsApi.Application.Commands.Continents;
 using NationsApi.Application.Interfaces;
 using NationsApi.Application.Mapper;
+using NationsApi.Application.Queries.Continent;
 using NationsApi.DataAccess;
-using NationsApi.Implementation.EfCommands.Continent;
+using NationsApi.Implementation.EfCommands.ContinentCommands;
+using NationsApi.Implementation.EfQueries.ContinentQueries;
 using NationsApi.Implementation.Logging;
 using NationsApi.Implementation.Validators.Continent;
 
@@ -34,6 +36,11 @@ builder.Services.AddTransient<UseCaseExecutor>();
 // Continent
 builder.Services.AddTransient<IAddContinentCommand, EfAddContinentCommand>();
 builder.Services.AddTransient<AddContinentValidator>();
+builder.Services.AddTransient<IUpdateContinentCommand, EfUpdateContinentCommand>();
+builder.Services.AddTransient<UpdateContinentValidator>();
+builder.Services.AddTransient<IDeleteContinentCommand, EfDeleteContinentCommand>();
+builder.Services.AddTransient<IGetOneContinentQuery, EfGetOneContinentQuery>();
+builder.Services.AddTransient<IGetContinentsQuery, EfGetContinentsQuery>();
 
 var app = builder.Build();
 

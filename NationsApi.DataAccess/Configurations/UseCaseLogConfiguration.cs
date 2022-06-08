@@ -15,7 +15,6 @@ namespace NationsApi.DataAccess.Configurations
         {
             // Use Case Name
             builder.Property(ucl => ucl.UseCaseName).IsRequired(true);
-            builder.HasIndex(ucl => ucl.UseCaseName).IsUnique();
 
             // Date
             builder.Property(ucl => ucl.Date).IsRequired(true);

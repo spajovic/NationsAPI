@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NationsApi.Implementation.EfCommands.Continent
+namespace NationsApi.Implementation.EfCommands.ContinentCommands
 {
     public class EfAddContinentCommand : BaseContext, IAddContinentCommand
     {
