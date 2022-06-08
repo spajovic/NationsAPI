@@ -14,4 +14,8 @@
     <ProjectReference Include="..\NationsApi.Domain\NationsApi.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Commands\Countries\" />
+  </ItemGroup>
+
 </Project>

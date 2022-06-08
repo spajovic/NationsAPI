@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using NationsApi.Application.Dto.Continets;
 using NationsApi.Application.Dto.Regions;
+using NationsApi.Application.Dto.Roles;
 using NationsApi.Domain;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,11 @@ namespace NationsApi.Application.Mapper
             CreateMap<AddRegionDto, Region>();
             CreateMap<UpdateRegionDto, Region>();
             CreateMap<Region, GetRegionDto>();
+
+            //Roles
+            CreateMap<AddRoleDto, Role>();
+            CreateMap<UpdateRoleDto, Role>();
+            CreateMap<Role, GetRoleDto>();
         }
     }
 }
