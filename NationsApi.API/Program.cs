@@ -1,6 +1,7 @@
 using NationsApi.API.Core;
 using NationsApi.Application;
 using NationsApi.Application.Commands.Continents;
+using NationsApi.Application.Commands.Countries;
 using NationsApi.Application.Commands.Regions;
 using NationsApi.Application.Commands.Roles;
 using NationsApi.Application.Commands.Users;
@@ -8,22 +9,26 @@ using NationsApi.Application.Email;
 using NationsApi.Application.Interfaces;
 using NationsApi.Application.Mapper;
 using NationsApi.Application.Queries.Continent;
+using NationsApi.Application.Queries.Countries;
 using NationsApi.Application.Queries.Region;
 using NationsApi.Application.Queries.Roles;
 using NationsApi.Application.Queries.User;
 using NationsApi.Application.Settings;
 using NationsApi.DataAccess;
 using NationsApi.Implementation.EfCommands.ContinentCommands;
+using NationsApi.Implementation.EfCommands.CountryCommands;
 using NationsApi.Implementation.EfCommands.RegionCommands;
 using NationsApi.Implementation.EfCommands.RoleCommands;
 using NationsApi.Implementation.EfCommands.UserCommands;
 using NationsApi.Implementation.EfQueries.ContinentQueries;
+using NationsApi.Implementation.EfQueries.CountryQueries;
 using NationsApi.Implementation.EfQueries.RegionQueries;
 using NationsApi.Implementation.EfQueries.RoleQueries;
 using NationsApi.Implementation.EfQueries.UserQueries;
 using NationsApi.Implementation.Email;
 using NationsApi.Implementation.Logging;
 using NationsApi.Implementation.Validators.Continent;
+using NationsApi.Implementation.Validators.Country;
 using NationsApi.Implementation.Validators.Region;
 using NationsApi.Implementation.Validators.Role;
 using NationsApi.Implementation.Validators.Users;
@@ -87,9 +92,18 @@ builder.Services.AddTransient<IAddUserCommand, EfAddUserCommand>();
 builder.Services.AddTransient<AddUserValidator>();
 builder.Services.AddTransient<IUpdateUserCommand, EfUpdateUserCommand>();
 builder.Services.AddTransient<UpdateUserValidator>();
+builder.Services.AddTransient<IDeleteCountryCommand, EfDeleteCountryCommand>();
 builder.Services.AddTransient<IDeleteUserCommand, EfDeleteUserCommand>();
 builder.Services.AddTransient<IGetOneUserQuery, EfGetOneUserQuery>();
 builder.Services.AddTransient<IGetUsersQuery, EfGetUsersQuery>();
+
+//Countries
+builder.Services.AddTransient<IAddCountryCommand, EfAddCountryCommand>();
+builder.Services.AddTransient<AddCountryValidator>();
+builder.Services.AddTransient<IUpdateCountryCommand, EfUpdateCountryCommand>();
+builder.Services.AddTransient<UpdateCountryValidator>();
+builder.Services.AddTransient<IGetOneCountryQuery, EfGetOneCountryQuery>();
+builder.Services.AddTransient<IGetCountriesQuery, EfGetCountriesQuery>();
 
 var app = builder.Build();
 
