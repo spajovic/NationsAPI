@@ -61,6 +61,12 @@ namespace NationsApi.Implementation.Validators.Country
                     RuleFor(x => x.UserId).Must(x => IsUserExistant(x))
                     .WithMessage("Provided user ID is not exsiting in the database");
                 });
+
+            RuleForEach(x => x.LanguageIds).ChildRules(id =>
+            {
+                id.RuleFor(x => x).Must(x => LanguageExists(x))
+                .WithMessage("Provided id of Language is not valid.");
+            });
             
         }
 
@@ -82,6 +88,11 @@ namespace NationsApi.Implementation.Validators.Country
         private bool IsCountryCodeUnique(string dtoCountryCode)
         {
             return context.Countries.Where(x => x.CountryCode == dtoCountryCode).FirstOrDefault() == null;
+        }
+
+        private bool LanguageExists(int id)
+        {
+            return context.Languages.Find(id) != null;
         }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NationsApi.DataAccess;
 
@@ -11,9 +12,10 @@ using NationsApi.DataAccess;
 namespace NationsApi.DataAccess.Migrations
 {
     [DbContext(typeof(NationsContext))]
-    partial class NationsContextModelSnapshot : ModelSnapshot
+    [Migration("20220609165206_test migration")]
+    partial class testmigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -177,20 +179,11 @@ namespace NationsApi.DataAccess.Migrations
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
                     b.Property<decimal?>("Gdp")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("Population")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Year", "CountryId");
 

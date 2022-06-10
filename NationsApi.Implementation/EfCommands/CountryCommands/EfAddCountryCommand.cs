@@ -21,6 +21,12 @@ namespace NationsApi.Implementation.EfCommands.CountryCommands
 
         public void Execute(Country request)
         {
+            request.CountryLanguages = request.Languages.Select(x => new CountryLanguage
+            {
+                Country = request,
+                Language = x
+            }).ToList();
+
             context.Add(request);
             context.SaveChanges();
         }

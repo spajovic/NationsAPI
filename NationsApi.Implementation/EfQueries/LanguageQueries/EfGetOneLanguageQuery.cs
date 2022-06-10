@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using NationsApi.Application.Dto.Language;
 using NationsApi.Application.Queries.Language;
 using NationsApi.DataAccess;
@@ -26,7 +27,9 @@ namespace NationsApi.Implementation.EfQueries.LanguageQueries
 
         public GetLanguageDto Execute(int search)
         {
-            Language language = context.Languages.Find(search);
+            Language language = context.Languages
+                .Include(i => i.Countries)
+                .FirstOrDefault(x => x.Id == search);
 
             if (language?.DeletedAt != null)
             {

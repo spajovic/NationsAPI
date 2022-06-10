@@ -30,6 +30,7 @@ namespace NationsApi.Implementation.EfQueries.CountryQueries
             Country country = context.Countries
                 .Include(i => i.User)
                 .Include(i => i.Region)
+                .Include(i => i.Languages)
                 .FirstOrDefault(x => x.Id == search);
 
             if (country?.DeletedAt != null)

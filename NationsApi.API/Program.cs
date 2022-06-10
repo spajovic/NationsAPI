@@ -1,7 +1,9 @@
+using AutoMapper;
 using NationsApi.API.Core;
 using NationsApi.Application;
 using NationsApi.Application.Commands.Continents;
 using NationsApi.Application.Commands.Countries;
+using NationsApi.Application.Commands.CountryStats;
 using NationsApi.Application.Commands.Languages;
 using NationsApi.Application.Commands.Regions;
 using NationsApi.Application.Commands.Roles;
@@ -19,6 +21,7 @@ using NationsApi.Application.Settings;
 using NationsApi.DataAccess;
 using NationsApi.Implementation.EfCommands.ContinentCommands;
 using NationsApi.Implementation.EfCommands.CountryCommands;
+using NationsApi.Implementation.EfCommands.CountryStatCommands;
 using NationsApi.Implementation.EfCommands.LanguageCommands;
 using NationsApi.Implementation.EfCommands.RegionCommands;
 using NationsApi.Implementation.EfCommands.RoleCommands;
@@ -33,6 +36,7 @@ using NationsApi.Implementation.Email;
 using NationsApi.Implementation.Logging;
 using NationsApi.Implementation.Validators.Continent;
 using NationsApi.Implementation.Validators.Country;
+using NationsApi.Implementation.Validators.CountryStat;
 using NationsApi.Implementation.Validators.Language;
 using NationsApi.Implementation.Validators.Region;
 using NationsApi.Implementation.Validators.Role;
@@ -57,6 +61,10 @@ builder.Services.AddTransient<IUseCaseLogger, DbUseCaseLogger>();
 
 // Mapper
 builder.Services.AddAutoMapper(typeof(MapperProfile));
+builder.Services.AddScoped(provider => new MapperConfiguration(config =>
+{
+    config.AddProfile(new MapperProfile(provider.GetService<NationsContext>()));
+}).CreateMapper());
 
 // Use case executor
 builder.Services.AddTransient<UseCaseExecutor>();
@@ -118,6 +126,10 @@ builder.Services.AddTransient<UpdateLanguageValidator>();
 builder.Services.AddTransient<IDeleteLanguageCommand, EfDeleteLanguageCommand>();
 builder.Services.AddTransient<IGetOneLanguageQuery, EfGetOneLanguageQuery>();
 builder.Services.AddTransient<IGetLanguagesQuery, EfGetLanguagesQuery>();
+
+//Country Stat
+builder.Services.AddTransient<IAddCountryStatCommand, EfAddCountryStatCommand>();
+builder.Services.AddTransient<AddCountryStatValidator>();
 
 var app = builder.Build();
 

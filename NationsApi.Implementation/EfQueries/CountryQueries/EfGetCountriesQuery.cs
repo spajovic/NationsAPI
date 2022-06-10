@@ -32,6 +32,7 @@ namespace NationsApi.Implementation.EfQueries.CountryQueries
                 .Include(i => i.Region)
                 .Include(i => i.User)
                 .Include(i => i.Region.Continent)
+                .Include(i => i.Languages)
                 .AsQueryable();
 
             if (!String.IsNullOrEmpty(search.Name))

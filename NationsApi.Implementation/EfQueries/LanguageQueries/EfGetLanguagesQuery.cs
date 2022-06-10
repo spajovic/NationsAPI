@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using NationsApi.Application.Dto.Language;
 using NationsApi.Application.Queries.Language;
 using NationsApi.Application.Searches;
@@ -27,7 +28,9 @@ namespace NationsApi.Implementation.EfQueries.LanguageQueries
 
         public IEnumerable<GetLanguageDto> Execute(LanguageSearch search)
         {
-            var query = context.Languages.AsQueryable();
+            var query = context.Languages
+                .Include(i => i.Countries)
+                .AsQueryable();
 
             BasicFilter(ref query, search);
 

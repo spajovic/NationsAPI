@@ -1,4 +1,5 @@
-﻿using NationsApi.Application.Commands.Countries;
+﻿using Microsoft.EntityFrameworkCore;
+using NationsApi.Application.Commands.Countries;
 using NationsApi.Application.Exceptions;
 using NationsApi.DataAccess;
 using NationsApi.Domain;
@@ -29,10 +30,19 @@ namespace NationsApi.Implementation.EfCommands.CountryCommands
                 throw new EntityNotFoundException(request.Id, "Countries");
             }
 
-            context.Entry(country).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
-
             request.UpdatedAt = DateTime.Now;
 
+            request.CountryLanguages = request.Languages.Select(x => new CountryLanguage
+            {
+                Country = request,
+                Language = x
+            }).ToList();
+
+            List<CountryLanguage> countryLanguages = context.CountryLanguages.Where(x => x.CountryId == request.Id).ToList();
+            context.RemoveRange(countryLanguages);
+            context.SaveChanges();
+
+            context.Entry(country).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
             var entity = context.Countries.Attach(request);
 
             entity.State = Microsoft.EntityFrameworkCore.EntityState.Modified;

@@ -32,7 +32,7 @@ namespace NationsApi.Implementation.Validators.Country
                 .WithMessage("Provided country name has more then 50 characters.").
                 DependentRules(() =>
                 {
-                    RuleFor(x => x.Name).Must(x => IsCountryNameUnique(x))
+                    RuleFor(x => x.Name).Must((dto,x) => IsCountryNameUnique(dto))
                     .WithMessage("Country name already exists in database.");
                 });
 
@@ -50,8 +50,7 @@ namespace NationsApi.Implementation.Validators.Country
                         .WithMessage("Country code can be in range of 2-6 characters")
                         .DependentRules(() =>
                         {
-                            // Ova implementacija nije ok u ovom slucaju, ali nema se vremena :/
-                            RuleFor(x => x.CountryCode).Must(x => IsCountryCodeUnique(x))
+                            RuleFor(x => x.CountryCode).Must((dto,x) => IsCountryCodeUnique(dto))
                             .WithMessage("Country Code already exists in database.");
                         });
                 });
@@ -71,15 +70,21 @@ namespace NationsApi.Implementation.Validators.Country
                     RuleFor(x => x.UserId).Must(x => IsUserExistant(x))
                     .WithMessage("Provided user ID is not exsiting in the database");
                 });
+
+            RuleForEach(x => x.LanguageIds).ChildRules(id =>
+            {
+                id.RuleFor(x => x).Must(x => LanguageExists(x))
+                .WithMessage("Provided id of Language is not valid.");
+            });
         }
 
         private bool IsCountryExisting(int dtoId)
         {
             return context.Countries.Where(x => x.Id == dtoId && x.DeletedAt == null).FirstOrDefault() != null;
         }
-        private bool IsCountryNameUnique(string dtoName)
+        private bool IsCountryNameUnique(UpdateCountryDto dto)
         {
-            return context.Countries.Where(x => x.Name == dtoName).FirstOrDefault() == null;
+            return context.Countries.Where(x => x.Name == dto.Name && x.Id != dto.Id).FirstOrDefault() == null;
         }
 
         private bool IsRegionExistant(int id)
@@ -92,9 +97,14 @@ namespace NationsApi.Implementation.Validators.Country
             return context.Users.Where(x => x.Id == id).FirstOrDefault() != null;
         }
 
-        private bool IsCountryCodeUnique(string dtoCountryCode)
+        private bool IsCountryCodeUnique(UpdateCountryDto dto)
         {
-            return context.Countries.Where(x => x.CountryCode == dtoCountryCode).FirstOrDefault() == null;
+            return context.Countries.Where(x => x.CountryCode == dto.CountryCode && x.Id != dto.Id).FirstOrDefault() == null;
+        }
+
+        private bool LanguageExists(int id)
+        {
+            return context.Languages.Find(id) != null;
         }
     }
 }

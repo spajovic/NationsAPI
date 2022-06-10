@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NationsApi.DataAccess\NationsApi.DataAccess.csproj" />
     <ProjectReference Include="..\NationsApi.Domain\NationsApi.Domain.csproj" />
   </ItemGroup>
 

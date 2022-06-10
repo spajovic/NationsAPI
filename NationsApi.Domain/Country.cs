@@ -23,5 +23,6 @@ namespace NationsApi.Domain
         public ICollection<CountryStat> CountryStats { get; set; } = new HashSet<CountryStat>();
         public ICollection<CountryLanguage> CountryLanguages { get; set; } = new HashSet<CountryLanguage>();
         public ICollection<CountryFlag> CountryFlags { get; set; } = new HashSet<CountryFlag>();
+        public ICollection<Language> Languages { get; set; } = new HashSet<Language>();
     }
 }

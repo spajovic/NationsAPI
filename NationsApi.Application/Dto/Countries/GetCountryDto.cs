@@ -17,5 +17,6 @@ namespace NationsApi.Application.Dto.Countries
         public int RegionId { get; set; }
         public string RegionName { get; set; }
         public GetUserDto User { get; set; }
+        public List<string> Languages { get; set; }
     }
 }

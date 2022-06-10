@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace NationsApi.Application.Dto.CountryStats
 {
-    public class CountryStatsDto
+    public class AddCountryStatDto
     {
         public int Year { get; set; }
+        public int CountryId { get; set; }
         public int Population { get; set; }
         public decimal Gdp { get; set; }
     }
