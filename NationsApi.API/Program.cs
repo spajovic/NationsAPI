@@ -6,6 +6,7 @@ using NationsApi.Application.Commands.Countries;
 using NationsApi.Application.Commands.CountryStats;
 using NationsApi.Application.Commands.Languages;
 using NationsApi.Application.Commands.Regions;
+using NationsApi.Application.Commands.RoleCase;
 using NationsApi.Application.Commands.Roles;
 using NationsApi.Application.Commands.Users;
 using NationsApi.Application.Email;
@@ -17,6 +18,7 @@ using NationsApi.Application.Queries.CountryStat;
 using NationsApi.Application.Queries.Language;
 using NationsApi.Application.Queries.Region;
 using NationsApi.Application.Queries.Roles;
+using NationsApi.Application.Queries.UseCaseLog;
 using NationsApi.Application.Queries.User;
 using NationsApi.Application.Settings;
 using NationsApi.DataAccess;
@@ -25,6 +27,7 @@ using NationsApi.Implementation.EfCommands.CountryCommands;
 using NationsApi.Implementation.EfCommands.CountryStatCommands;
 using NationsApi.Implementation.EfCommands.LanguageCommands;
 using NationsApi.Implementation.EfCommands.RegionCommands;
+using NationsApi.Implementation.EfCommands.RoleCaseCommands;
 using NationsApi.Implementation.EfCommands.RoleCommands;
 using NationsApi.Implementation.EfCommands.UserCommands;
 using NationsApi.Implementation.EfQueries.ContinentQueries;
@@ -33,6 +36,7 @@ using NationsApi.Implementation.EfQueries.CountryStatQueries;
 using NationsApi.Implementation.EfQueries.LanguageQueries;
 using NationsApi.Implementation.EfQueries.RegionQueries;
 using NationsApi.Implementation.EfQueries.RoleQueries;
+using NationsApi.Implementation.EfQueries.UseCaseLogQueries;
 using NationsApi.Implementation.EfQueries.UserQueries;
 using NationsApi.Implementation.Email;
 using NationsApi.Implementation.Logging;
@@ -42,6 +46,7 @@ using NationsApi.Implementation.Validators.CountryStat;
 using NationsApi.Implementation.Validators.Language;
 using NationsApi.Implementation.Validators.Region;
 using NationsApi.Implementation.Validators.Role;
+using NationsApi.Implementation.Validators.RoleCase;
 using NationsApi.Implementation.Validators.Users;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -138,6 +143,15 @@ builder.Services.AddTransient<IDeleteCountryStatCommand, EfDeleteCountryStatComm
 builder.Services.AddTransient<RemoveCountryStatValidator>();
 builder.Services.AddTransient<IGetOneCountryStatQuery, EfGetOneCountryStatQuery>();
 builder.Services.AddTransient<IGetCountryStatsQuery, EfGetCountryStatsQuery>();
+
+//UseCaseLogs
+builder.Services.AddTransient<IGetUseCaseLogsQuery, EfGetUseCaseLogsQuery>();
+
+//Role UseCase
+builder.Services.AddTransient<IAddRoleUseCaseCommand, EfAddRoleUseCaseCommand>();
+builder.Services.AddTransient<AddRoleUseCaseValidator>();
+builder.Services.AddTransient<IDeleteRoleUseCaseCommand, EfDeleteRoleUseCaseCommand>();
+builder.Services.AddTransient<DeleteRoleUseCaseValidator>();
 
 var app = builder.Build();
 

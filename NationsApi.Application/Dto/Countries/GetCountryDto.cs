@@ -1,4 +1,5 @@
-﻿using NationsApi.Application.Dto.Users;
+﻿using NationsApi.Application.Dto.CountryStats;
+using NationsApi.Application.Dto.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,6 @@ namespace NationsApi.Application.Dto.Countries
         public string RegionName { get; set; }
         public GetUserDto User { get; set; }
         public List<string> Languages { get; set; }
+        public List<GetCountryStatDto> CountryStats { get; set; }
     }
 }

@@ -4,7 +4,9 @@ using NationsApi.Application.Dto.Countries;
 using NationsApi.Application.Dto.CountryStats;
 using NationsApi.Application.Dto.Language;
 using NationsApi.Application.Dto.Regions;
+using NationsApi.Application.Dto.RoleCase;
 using NationsApi.Application.Dto.Roles;
+using NationsApi.Application.Dto.UseCaseLog;
 using NationsApi.Application.Dto.Users;
 using NationsApi.Application.Mapper.Resolvers;
 using NationsApi.DataAccess;
@@ -59,6 +61,12 @@ namespace NationsApi.Application.Mapper
             CreateMap<UpdateCountryStatDto, CountryStat>();
             CreateMap<RemoveCountryStatDto, CountryStat>();
             CreateMap<CountryStat, GetCountryStatDto>();
+
+            //UseCaseLogs
+            CreateMap<UseCaseLog, GetUseCaseLogDto>();
+
+            //RoleUseCase
+            CreateMap<RoleUseCaseDto, RoleUseCase>();
         }
     }
 }
