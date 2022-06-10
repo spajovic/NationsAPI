@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NationsApi.Application.Commands.CountryStats
 {
-    public interface IUpdateCountryStat : ICommand<CountryStat>
+    public interface IUpdateCountryStatCommand : ICommand<CountryStat>
     {
     }
 }

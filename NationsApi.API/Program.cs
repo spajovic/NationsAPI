@@ -13,6 +13,7 @@ using NationsApi.Application.Interfaces;
 using NationsApi.Application.Mapper;
 using NationsApi.Application.Queries.Continent;
 using NationsApi.Application.Queries.Countries;
+using NationsApi.Application.Queries.CountryStat;
 using NationsApi.Application.Queries.Language;
 using NationsApi.Application.Queries.Region;
 using NationsApi.Application.Queries.Roles;
@@ -28,6 +29,7 @@ using NationsApi.Implementation.EfCommands.RoleCommands;
 using NationsApi.Implementation.EfCommands.UserCommands;
 using NationsApi.Implementation.EfQueries.ContinentQueries;
 using NationsApi.Implementation.EfQueries.CountryQueries;
+using NationsApi.Implementation.EfQueries.CountryStatQueries;
 using NationsApi.Implementation.EfQueries.LanguageQueries;
 using NationsApi.Implementation.EfQueries.RegionQueries;
 using NationsApi.Implementation.EfQueries.RoleQueries;
@@ -130,6 +132,12 @@ builder.Services.AddTransient<IGetLanguagesQuery, EfGetLanguagesQuery>();
 //Country Stat
 builder.Services.AddTransient<IAddCountryStatCommand, EfAddCountryStatCommand>();
 builder.Services.AddTransient<AddCountryStatValidator>();
+builder.Services.AddTransient<IUpdateCountryStatCommand, EfUpdateCountryStatCommand>();
+builder.Services.AddTransient<UpdateCountryStatValidator>();
+builder.Services.AddTransient<IDeleteCountryStatCommand, EfDeleteCountryStatCommand>();
+builder.Services.AddTransient<RemoveCountryStatValidator>();
+builder.Services.AddTransient<IGetOneCountryStatQuery, EfGetOneCountryStatQuery>();
+builder.Services.AddTransient<IGetCountryStatsQuery, EfGetCountryStatsQuery>();
 
 var app = builder.Build();
 

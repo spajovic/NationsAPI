@@ -35,6 +35,8 @@ namespace NationsApi.Implementation.EfQueries.CountryQueries
                 .Include(i => i.Languages)
                 .AsQueryable();
 
+            BasicFilter(ref query, search);
+
             if (!String.IsNullOrEmpty(search.Name))
             {
                 query = query.Where(x => x.Name.ToLower().Contains(search.Name.ToLower()));

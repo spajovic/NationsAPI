@@ -56,6 +56,9 @@ namespace NationsApi.Application.Mapper
 
             //CountryStats
             CreateMap<AddCountryStatDto, CountryStat>();
+            CreateMap<UpdateCountryStatDto, CountryStat>();
+            CreateMap<RemoveCountryStatDto, CountryStat>();
+            CreateMap<CountryStat, GetCountryStatDto>();
         }
     }
 }
