@@ -63,6 +63,10 @@ builder.Services.AddSwaggerGen();
 // Database Context
 builder.Services.AddDbContext<NationsContext>();
 
+// Cika Swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 // Actor
 builder.Services.AddTransient<IAppActor, FakeApiActor>();
 
@@ -165,6 +169,7 @@ builder.Services.AddTransient<IDeleteCountryFlagCommand, EfDeleteCountryFlagComm
 builder.Services.AddTransient<DeleteCountryFlagValidator>();
 
 var app = builder.Build();
+app.UseSwaggerUI();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -172,6 +177,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseSwagger(x => x.SerializeAsV2 = true);
 
 app.UseAuthorization();
 

@@ -34,6 +34,7 @@ namespace NationsApi.Implementation.EfQueries.CountryQueries
                 .Include(i => i.Region.Continent)
                 .Include(i => i.Languages)
                 .Include(i => i.CountryStats)
+                .Include(i => i.CountryFlags)
                 .AsQueryable();
 
             BasicFilter(ref query, search);

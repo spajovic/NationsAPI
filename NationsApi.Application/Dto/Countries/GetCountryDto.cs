@@ -20,5 +20,6 @@ namespace NationsApi.Application.Dto.Countries
         public GetUserDto User { get; set; }
         public List<string> Languages { get; set; }
         public List<GetCountryStatDto> CountryStats { get; set; }
+        public List<string> Images { get; set; }
     }
 }

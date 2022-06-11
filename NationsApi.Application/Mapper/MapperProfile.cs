@@ -50,7 +50,8 @@ namespace NationsApi.Application.Mapper
             //Countries
             CreateMap<AddCountryDto, Country>().ForMember(x => x.Languages, q => q.MapFrom(new LanguageIdsResolver(context)));
             CreateMap<UpdateCountryDto, Country>().ForMember(x => x.Languages, q => q.MapFrom(new LanguageIdsResolver(context)));
-            CreateMap<Country,GetCountryDto>().ForMember(x => x.Languages, q => q.MapFrom(new LanguageNamesResolver()));
+            CreateMap<Country, GetCountryDto>().ForMember(x => x.Languages, q => q.MapFrom(new LanguageNamesResolver()))
+                .ForMember(x => x.Images, q => q.MapFrom(new FlagImagePathResolver()));
 
             //Languages
             CreateMap<AddLanguageDto, Language>();
