@@ -3,6 +3,7 @@ using NationsApi.API.Core;
 using NationsApi.Application;
 using NationsApi.Application.Commands.Continents;
 using NationsApi.Application.Commands.Countries;
+using NationsApi.Application.Commands.CountryFlags;
 using NationsApi.Application.Commands.CountryStats;
 using NationsApi.Application.Commands.Languages;
 using NationsApi.Application.Commands.Regions;
@@ -24,6 +25,7 @@ using NationsApi.Application.Settings;
 using NationsApi.DataAccess;
 using NationsApi.Implementation.EfCommands.ContinentCommands;
 using NationsApi.Implementation.EfCommands.CountryCommands;
+using NationsApi.Implementation.EfCommands.CountryFlagCommands;
 using NationsApi.Implementation.EfCommands.CountryStatCommands;
 using NationsApi.Implementation.EfCommands.LanguageCommands;
 using NationsApi.Implementation.EfCommands.RegionCommands;
@@ -42,6 +44,7 @@ using NationsApi.Implementation.Email;
 using NationsApi.Implementation.Logging;
 using NationsApi.Implementation.Validators.Continent;
 using NationsApi.Implementation.Validators.Country;
+using NationsApi.Implementation.Validators.CountryFlag;
 using NationsApi.Implementation.Validators.CountryStat;
 using NationsApi.Implementation.Validators.Language;
 using NationsApi.Implementation.Validators.Region;
@@ -152,6 +155,14 @@ builder.Services.AddTransient<IAddRoleUseCaseCommand, EfAddRoleUseCaseCommand>()
 builder.Services.AddTransient<AddRoleUseCaseValidator>();
 builder.Services.AddTransient<IDeleteRoleUseCaseCommand, EfDeleteRoleUseCaseCommand>();
 builder.Services.AddTransient<DeleteRoleUseCaseValidator>();
+
+//Country Flag
+builder.Services.AddTransient<IAddCountryFlagCommand, EfAddCountryFlagCommand>();
+builder.Services.AddTransient<AddCountryFlagValidator>();
+builder.Services.AddTransient<IUpdateCountryFlagCommand, EfUpdateCountryFlagCommand>();
+builder.Services.AddTransient<UpdateCountryFlagValidator>();
+builder.Services.AddTransient<IDeleteCountryFlagCommand, EfDeleteCountryFlagCommand>();
+builder.Services.AddTransient<DeleteCountryFlagValidator>();
 
 var app = builder.Build();
 

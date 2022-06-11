@@ -16,7 +16,6 @@ namespace NationsApi.DataAccess
         public DbSet<Language> Languages { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<CountryFlag> CountryFlags { get; set; }
-        public DbSet<CountryLanguage> CountryLanguages { get; set; }
         public DbSet<CountryStat> CountryStats { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
@@ -35,7 +34,6 @@ namespace NationsApi.DataAccess
             modelBuilder.ApplyConfiguration(new ContinentConfiguration());
             modelBuilder.ApplyConfiguration(new CountryConfiguration());
             modelBuilder.ApplyConfiguration(new CountryFlagConfiguration());
-            modelBuilder.ApplyConfiguration(new CountryLanguageConfiguration());
             modelBuilder.ApplyConfiguration(new CountryStatConfiguration());
             modelBuilder.ApplyConfiguration(new LanguageConfiguration());
             modelBuilder.ApplyConfiguration(new RegionConfiguration());

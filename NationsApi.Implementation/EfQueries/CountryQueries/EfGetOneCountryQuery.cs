@@ -31,7 +31,6 @@ namespace NationsApi.Implementation.EfQueries.CountryQueries
                 .Include(i => i.User)
                 .Include(i => i.Region)
                 .Include(i => i.Languages)
-                .Include(i => i.CountryLanguages)
                 .FirstOrDefault(x => x.Id == search);
 
             if (country?.DeletedAt != null)

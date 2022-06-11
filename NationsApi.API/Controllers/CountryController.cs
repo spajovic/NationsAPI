@@ -78,7 +78,6 @@ namespace NationsApi.API.Controllers
             [FromServices] UpdateCountryValidator validator)
         {
             dto.Id = id;
-            dto.NationalDay = DateTime.Parse("2018-12-10T13:49:51.141Z");
             var result = validator.Validate(dto);
             if (result.IsValid)
             {

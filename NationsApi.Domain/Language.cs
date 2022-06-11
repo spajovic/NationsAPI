@@ -11,7 +11,6 @@ namespace NationsApi.Domain
         public string Name { get; set; }
 
         // Collections
-        public ICollection<CountryLanguage> CountryLanguages { get; set; } = new HashSet<CountryLanguage>();
         public ICollection<Country> Countries { get; set; } = new HashSet<Country>();
     }
 }

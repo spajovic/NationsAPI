@@ -31,16 +31,7 @@ namespace NationsApi.Implementation.EfCommands.CountryCommands
             }
 
             request.UpdatedAt = DateTime.Now;
-
-            request.CountryLanguages = request.Languages.Select(x => new CountryLanguage
-            {
-                Country = request,
-                Language = x
-            }).ToList();
-
-            List<CountryLanguage> countryLanguages = context.CountryLanguages.Where(x => x.CountryId == request.Id).ToList();
-            context.RemoveRange(countryLanguages);
-            context.SaveChanges();
+            // Iz nekog razloga ne prepoznaje update many to many :/
 
             context.Entry(country).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
             var entity = context.Countries.Attach(request);

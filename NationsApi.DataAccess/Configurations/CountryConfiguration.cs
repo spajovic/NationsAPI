@@ -36,9 +36,6 @@ namespace NationsApi.DataAccess.Configurations
             builder.HasIndex(c => c.CountryCode).IsUnique();
 
             // Relations
-            builder.HasMany(c => c.CountryLanguages)
-                .WithOne(cl => cl.Country)
-                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(c => c.CountryStats)
                 .WithOne(cs => cs.Country)

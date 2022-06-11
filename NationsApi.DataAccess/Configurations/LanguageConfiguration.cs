@@ -21,11 +21,7 @@ namespace NationsApi.DataAccess.Configurations
                 .IsRequired(true);
 
             builder.HasIndex(l => l.Name).IsUnique();
-
-            // Relations
-            builder.HasMany(l => l.CountryLanguages)
-                .WithOne(cl => cl.Language)
-                .OnDelete(DeleteBehavior.Restrict);
+           
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using NationsApi.Application.Dto.Continets;
 using NationsApi.Application.Dto.Countries;
+using NationsApi.Application.Dto.CountryFlags;
 using NationsApi.Application.Dto.CountryStats;
 using NationsApi.Application.Dto.Language;
 using NationsApi.Application.Dto.Regions;
@@ -67,6 +68,11 @@ namespace NationsApi.Application.Mapper
 
             //RoleUseCase
             CreateMap<RoleUseCaseDto, RoleUseCase>();
+
+            //Country Flags
+            CreateMap<AddCountryFlagDto, CountryFlag>();
+            CreateMap<UpdateCountryFlagDto, CountryFlag>();
+            CreateMap<DeleteCountryFlagDto, CountryFlag>();
         }
     }
 }
