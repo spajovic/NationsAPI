@@ -68,7 +68,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Actor
-builder.Services.AddTransient<IAppActor, FakeApiActor>();
+builder.Services.AddTransient<IAppActor, FakeAdminApiActor>();
 
 // Logger
 builder.Services.AddTransient<IUseCaseLogger, DbUseCaseLogger>();

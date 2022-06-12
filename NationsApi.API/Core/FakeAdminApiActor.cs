@@ -2,11 +2,11 @@
 
 namespace NationsApi.API.Core
 {
-    public class FakeApiActor : IAppActor
+    public class FakeAdminApiActor : IAppActor
     {
         public int Id => 1;
 
-        public string Username => "fakeActor";
+        public string Username => "fakeAdminActor";
 
         public IEnumerable<int> AllowedUseCases => Enumerable.Range(1,100);
     }
