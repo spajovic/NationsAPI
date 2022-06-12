@@ -24,7 +24,7 @@ namespace NationsApi.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-0I2IDS5;Initial Catalog=Nations;Integrated Security=True");
+            optionsBuilder.UseSqlServer("your db connection string");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
